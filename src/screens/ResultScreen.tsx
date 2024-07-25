@@ -62,6 +62,7 @@ const ResultScreen = () => {
           onPress={() => {
             navigation.goBack();
           }}
+          style={styles.btnStyle}
           title="Go to Home"
         />
       </View>
@@ -77,13 +78,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 30,
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colors.primary,
     padding: 20,
   },
   titleText: {
     fontSize: 20,
     fontWeight: '900',
-    color: colors.primary,
+    color: '#fff',
   },
   descriptionContainer: {
     gap: 15,
@@ -92,26 +93,30 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingHorizontal: 20,
     fontSize: 18,
+    color: '#fff',
   },
   speedometerWrapper: {
-    paddingBottom: 50,
+    paddingBottom: 70,
     alignItems: 'center',
     gap: 30,
     backgroundColor: 'white',
     shadowColor: 'black',
-    shadowOpacity: 0.3,
+    shadowOpacity: 0.2,
     padding: 20,
     elevation: 10,
     margin: 20,
-    borderRadius: 10,
-    shadowRadius: 10,
+    borderRadius: 5,
+    shadowRadius: 5,
   },
   thankYouText: {
     fontSize: 16,
     fontWeight: '700',
+    color: '#fff',
   },
   buttonContainer: {
-    alignItems: 'center',
     gap: 20,
+  },
+  btnStyle: {
+    backgroundColor: colors.btnColor,
   },
 });
