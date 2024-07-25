@@ -38,15 +38,18 @@ exports[`RadioButton renders correctly 1`] = `
 >
   <View
     style={
-      {
-        "alignItems": "center",
-        "borderColor": "#694F8E",
-        "borderRadius": 10,
-        "borderWidth": 2,
-        "height": 30,
-        "justifyContent": "center",
-        "width": 30,
-      }
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#694F8E",
+          "borderRadius": 10,
+          "borderWidth": 2,
+          "height": 30,
+          "justifyContent": "center",
+          "width": 30,
+        },
+        undefined,
+      ]
     }
   />
 </View>

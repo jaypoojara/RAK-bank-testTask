@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  render,
-  fireEvent,
-  screen,
-  waitFor,
-} from '@testing-library/react-native';
+import {render, fireEvent, screen} from '@testing-library/react-native';
 import {IQuestionItem} from '../../interface/questionInterface';
 import QuestionsScreen from '../QuestionsScreen';
 
@@ -79,11 +74,6 @@ jest.mock('@react-navigation/native', () => ({
   useNavigation: () => mockNavigation,
 }));
 
-jest.mock('react', () => ({
-  ...jest.requireActual('react'),
-  useState: jest.fn(),
-}));
-
 describe('QuestionsScreen', () => {
   // beforeEach(() => {
   //   useState.mockImplementation(jest.requireActual('react').useState);
@@ -103,36 +93,36 @@ describe('QuestionsScreen', () => {
 
     // expect(someMockOrSpySetter).toHaveBeenCalled();
 
-    // expect(screen.getByText(mockQuestions[1].question)).toBeTruthy();
+    expect(screen.getByText(mockQuestions[1].question)).toBeTruthy();
     // // Select and submit the first question's option
-    // fireEvent.press(screen.getByText(mockQuestions[1].options[0].title)); // Novice
-    // fireEvent.press(screen.getByText('Next')); // Click Next button
+    fireEvent.press(screen.getByText(mockQuestions[1].options[0].title)); // Novice
+    fireEvent.press(screen.getByText('Next')); // Click Next button
 
-    // expect(screen.getByText(mockQuestions[2].question)).toBeTruthy();
-    // // Select and submit the first question's option
-    // fireEvent.press(screen.getByText(mockQuestions[2].options[0].title)); // Novice
-    // fireEvent.press(screen.getByText('Next')); // Click Next button
+    expect(screen.getByText(mockQuestions[2].question)).toBeTruthy();
+    // Select and submit the first question's option
+    fireEvent.press(screen.getByText(mockQuestions[2].options[0].title)); // Novice
+    fireEvent.press(screen.getByText('Next')); // Click Next button
 
-    // expect(screen.getByText(mockQuestions[3].question)).toBeTruthy();
-    // // Select and submit the first question's option
-    // fireEvent.press(screen.getByText(mockQuestions[3].options[0].title)); // Novice
-    // fireEvent.press(screen.getByText('Next')); // Click Next button
+    expect(screen.getByText(mockQuestions[3].question)).toBeTruthy();
+    // Select and submit the first question's option
+    fireEvent.press(screen.getByText(mockQuestions[3].options[0].title)); // Novice
+    fireEvent.press(screen.getByText('Next')); // Click Next button
 
-    // expect(screen.getByText(mockQuestions[4].question)).toBeTruthy();
-    // // Select and submit the first question's option
-    // fireEvent.press(screen.getByText(mockQuestions[4].options[0].title)); // Novice
-    // fireEvent.press(screen.getByText('Finish')); // Click Next button
+    expect(screen.getByText(mockQuestions[4].question)).toBeTruthy();
+    // Select and submit the first question's option
+    fireEvent.press(screen.getByText(mockQuestions[4].options[0].title)); // Novice
+    fireEvent.press(screen.getByText('Finish')); // Click Next button
 
     // Check if the navigation.reset was called with correct parameters
-    // expect(mockNavigation.reset).toHaveBeenCalledWith({
-    //   index: 1,
-    //   routes: [
-    //     {name: 'Home'},
-    //     {
-    //       name: 'Result',
-    //       params: {totalScore: 1}, // sum of selected points
-    //     },
-    //   ],
-    // });
+    expect(mockNavigation.reset).toHaveBeenCalledWith({
+      index: 1,
+      routes: [
+        {name: 'Home'},
+        {
+          name: 'Result',
+          params: {totalScore: 5}, // sum of selected points
+        },
+      ],
+    });
   });
 });
