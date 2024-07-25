@@ -11,9 +11,12 @@ interface IProps extends TouchableOpacityProps {
 const RadioButton = (props: IProps) => {
   const {value = false, onChange} = props;
   return (
-    <TouchableOpacity {...props} onPress={() => onChange?.(!value)}>
+    <TouchableOpacity
+      testID="radio-button"
+      {...props}
+      onPress={() => onChange?.(!value)}>
       <View style={styles.container}>
-        {value && <View style={styles.fill} />}
+        {value && <View testID="radio-fill" style={styles.fill} />}
       </View>
     </TouchableOpacity>
   );
