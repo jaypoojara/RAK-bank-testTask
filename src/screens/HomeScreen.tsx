@@ -1,4 +1,4 @@
-import {Button, SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
     padding: 20,
-    backgroundColor: 'white',
+    backgroundColor: '#fff',
   },
   welcomeText: {
     paddingTop: 20,

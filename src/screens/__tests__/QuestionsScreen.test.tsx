@@ -83,7 +83,6 @@ jest.mock('react', () => ({
   ...jest.requireActual('react'),
   useState: jest.fn(),
 }));
-import {useState} from 'react';
 
 describe('QuestionsScreen', () => {
   // beforeEach(() => {

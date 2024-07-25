@@ -5,16 +5,16 @@ import {
   Text,
   TouchableOpacity,
   View,
+  SafeAreaView,
 } from 'react-native';
 import React, {useMemo, useState} from 'react';
-import {SafeAreaView} from 'react-native-safe-area-context';
 import AppButton from '../components/AppButton';
 import {IOptionItem, IQuestionItem} from '../interface/questionInterface';
-import RadioButton from '../components/RadioButton';
 import {getMaxRiskScore} from '../utils/helper';
 import {useNavigation} from '@react-navigation/native';
 import {AppNavigationProps} from '../../App';
 import {colors} from '../utils/theme';
+import RadioButton from '../components/RadioButton';
 
 const {height} = Dimensions.get('window');
 
@@ -57,95 +57,114 @@ const QuestionsScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.riskMeter}>
-        <View style={styles.riskMeterContainer}>
-          <Image
-            style={styles.riskMeterImage}
-            source={require('../assets/images/riskGradient.png')}
-          />
-          <View
-            style={[styles.riskMeterOverlay, {width: `${getRiskMeter}%`}]}
-          />
-        </View>
-      </View>
-      <View style={styles.questionContainer}>
-        <View style={styles.questionCard}>
-          <Text style={styles.questionText}>{currentQuestion.question}</Text>
-          <View style={styles.optionsContainer}>
-            {currentQuestion.options.map((item, index) => {
-              return (
-                <TouchableOpacity
-                  key={index.toString()}
-                  onPress={() => onRadioBtnChangeHandler(item)}
-                  style={[
-                    styles.optionItem,
-                    {
-                      backgroundColor:
-                        answers[currentQuestionIndex] === item
-                          ? colors.primary
-                          : 'transparent',
-                    },
-                  ]}>
-                  {/* <RadioButton
-                    value={Boolean(
-                      answers[currentQuestionIndex]?.key === item.key,
-                    )}
-                    onChange={() => {
-                      onRadioBtnChangeHandler(item);
-                    }}
-                  /> */}
-                  <Text
-                    style={[
-                      styles.optionText,
-                      {
-                        color:
-                          answers[currentQuestionIndex] === item
-                            ? 'white'
-                            : 'black',
-                      },
-                    ]}>
-                    {item.title}
-                  </Text>
-                </TouchableOpacity>
-              );
-            })}
+      <View
+        style={{
+          paddingHorizontal: 15,
+          flex: 1,
+          gap: 90,
+        }}>
+        <View style={styles.riskMeter}>
+          <View style={styles.riskMeterContainer}>
+            <Image
+              style={styles.riskMeterImage}
+              source={require('../assets/images/riskGradient.png')}
+            />
+            <View
+              style={[styles.riskMeterOverlay, {width: `${getRiskMeter}%`}]}
+            />
           </View>
         </View>
-      </View>
-      <View style={styles.navigationButtonsContainer}>
-        <AppButton
-          disabled={isFirstQuestion}
-          title="Back"
-          style={styles.btnStyle}
-          onPress={prevBtnHandler}
-        />
-        {isLastQuestion ? (
+        <View style={styles.questionContainer}>
+          <View style={styles.questionCard}>
+            <Text style={styles.questionText}>{currentQuestion.question}</Text>
+            <View style={styles.optionsContainer}>
+              {currentQuestion.options.map((item, index) => {
+                return (
+                  <TouchableOpacity
+                    key={index.toString()}
+                    onPress={() => onRadioBtnChangeHandler(item)}
+                    style={[
+                      styles.optionItem,
+                      {
+                        backgroundColor:
+                          answers[currentQuestionIndex] === item
+                            ? colors.primary
+                            : 'transparent',
+                      },
+                    ]}>
+                    <RadioButton
+                      value={Boolean(
+                        answers[currentQuestionIndex]?.key === item.key,
+                      )}
+                      onChange={() => {
+                        onRadioBtnChangeHandler(item);
+                      }}
+                      fillStyle={{
+                        backgroundColor:
+                          answers[currentQuestionIndex]?.key === item.key
+                            ? '#fff'
+                            : colors.primary,
+                      }}
+                      containerStyle={{
+                        borderColor:
+                          answers[currentQuestionIndex]?.key === item.key
+                            ? '#fff'
+                            : colors.primary,
+                      }}
+                    />
+                    <Text
+                      style={[
+                        styles.optionText,
+                        {
+                          color:
+                            answers[currentQuestionIndex] === item
+                              ? '#fff'
+                              : '#000',
+                        },
+                      ]}>
+                      {item.title}
+                    </Text>
+                  </TouchableOpacity>
+                );
+              })}
+            </View>
+          </View>
+        </View>
+        <View style={styles.navigationButtonsContainer}>
           <AppButton
-            title="Finish"
+            disabled={isFirstQuestion}
+            title="Back"
             style={styles.btnStyle}
-            onPress={() => {
-              navigation.reset({
-                index: 1,
-                routes: [
-                  {name: 'Home'},
-                  {
-                    name: 'Result',
-                    params: {
-                      totalScore: calculateTotalPoints,
+            onPress={prevBtnHandler}
+          />
+          {isLastQuestion ? (
+            <AppButton
+              title="Finish"
+              style={styles.btnStyle}
+              onPress={() => {
+                navigation.reset({
+                  index: 1,
+                  routes: [
+                    {name: 'Home'},
+                    {
+                      name: 'Result',
+                      params: {
+                        totalScore: calculateTotalPoints,
+                      },
                     },
-                  },
-                ],
-              });
-            }}
-          />
-        ) : (
-          <AppButton
-            title="Next"
-            disabled={!!!answers[currentQuestionIndex]}
-            style={styles.btnStyle}
-            onPress={nextBtnHandler}
-          />
-        )}
+                  ],
+                });
+              }}
+            />
+          ) : (
+            <AppButton
+              title="Next"
+              disabled={!!!answers[currentQuestionIndex]}
+              style={styles.btnStyle}
+              onPress={nextBtnHandler}
+            />
+          )}
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -159,6 +178,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     gap: 90,
     backgroundColor: colors.primary,
+    paddingVertical: 10,
+    // marginVertical: 10,
   },
   riskMeterContainer: {
     height: 20,
@@ -172,7 +193,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   riskMeterOverlay: {
-    backgroundColor: 'white',
+    backgroundColor: '#fff',
     height: 20,
     position: 'absolute',
   },
@@ -181,8 +202,8 @@ const styles = StyleSheet.create({
     gap: 40,
   },
   questionCard: {
-    backgroundColor: 'white',
-    shadowColor: 'black',
+    backgroundColor: '#fff',
+    shadowColor: '#000',
     shadowOpacity: 0.3,
     padding: 20,
     elevation: 10,
@@ -210,6 +231,7 @@ const styles = StyleSheet.create({
   },
   optionText: {
     fontSize: 18,
+    width: '85%',
   },
   navigationButtonsContainer: {
     flexDirection: 'row',

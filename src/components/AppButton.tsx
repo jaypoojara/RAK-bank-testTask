@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#A2A2A2',
   },
   title: {
-    color: 'white',
+    color: '#fff',
     fontSize: 16,
     fontWeight: '900',
     justifyContent: 'center',
