@@ -14,6 +14,7 @@ import RadioButton from '../components/RadioButton';
 import {getMaxRiskScore} from '../utils/helper';
 import {useNavigation} from '@react-navigation/native';
 import {AppNavigationProps} from '../../App';
+import {colors} from '../utils/theme';
 
 const QuestionsScreen = () => {
   const navigation = useNavigation<AppNavigationProps>();
@@ -45,77 +46,49 @@ const QuestionsScreen = () => {
     return 100 - (calculateTotalPoints / getMaxRiskScore()) * 100;
   }, [calculateTotalPoints]);
 
+  const onRadioBtnChangeHandler = (item: IOptionItem) => {
+    setAnswers(prev => {
+      prev[currentQuestionIndex] = item;
+      return [...prev];
+    });
+  };
+
   return (
-    <SafeAreaView style={{flex: 1, paddingHorizontal: 15, gap: 20}}>
-      <View
-        style={{
-          height: 20,
-          width: '100%',
-          overflow: 'hidden',
-          borderRadius: 4,
-          alignItems: 'flex-end',
-        }}>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.riskMeterContainer}>
         <Image
-          style={{height: '100%', width: '100%'}}
+          style={styles.riskMeterImage}
           source={require('../assets/images/riskGradient.png')}
         />
-        <View
-          style={{
-            backgroundColor: 'white',
-            height: 20,
-            position: 'absolute',
-            width: `${getRiskMeter}%`,
-          }}
-        />
+        <View style={[styles.riskMeterOverlay, {width: `${getRiskMeter}%`}]} />
       </View>
-      <View
-        style={{
-          flex: 1,
-          gap: 20,
-        }}>
-        <Text
-          style={{
-            fontSize: 16,
-            fontWeight: '600',
-          }}>
-          {currentQuestion.question}
-        </Text>
+      <View style={styles.questionContainer}>
+        <View style={styles.questionCard}>
+          <Text style={styles.questionText}>{currentQuestion.question}</Text>
+        </View>
 
-        <View style={{gap: 10}}>
+        <View style={styles.optionsContainer}>
           {currentQuestion.options.map((item, index) => {
             return (
-              <View
-                key={index.toString()}
-                style={{
-                  flexDirection: 'row',
-                  gap: 12,
-                  alignItems: 'center',
-                }}>
+              <View key={index.toString()} style={styles.optionItem}>
                 <RadioButton
                   value={Boolean(
                     answers[currentQuestionIndex]?.key === item.key,
                   )}
                   onChange={() => {
-                    setAnswers(prev => {
-                      prev[currentQuestionIndex] = item;
-                      return [...prev];
-                    });
+                    onRadioBtnChangeHandler(item);
                   }}
                 />
-                <Text>{item.title}</Text>
+                <Text style={styles.optionText}>{item.title}</Text>
               </View>
             );
           })}
         </View>
       </View>
-      <View
-        style={{
-          flexDirection: 'row',
-          gap: 40,
-        }}>
+      <View style={styles.navigationButtonsContainer}>
         <AppButton
           disabled={isFirstQuestion}
-          title="Previous"
+          title="Back"
           style={styles.btnStyle}
           onPress={prevBtnHandler}
         />
@@ -124,9 +97,6 @@ const QuestionsScreen = () => {
             title="Finish"
             style={styles.btnStyle}
             onPress={() => {
-              //   navigation.navigate('Result', {
-              //     calculateTotalPoints: calculateTotalPoints,
-              //   });
               navigation.reset({
                 index: 1,
                 routes: [
@@ -157,6 +127,60 @@ const QuestionsScreen = () => {
 export default QuestionsScreen;
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingHorizontal: 15,
+    gap: 90,
+    backgroundColor: 'white',
+  },
+  riskMeterContainer: {
+    height: 20,
+    width: '100%',
+    overflow: 'hidden',
+    borderRadius: 4,
+    alignItems: 'flex-end',
+  },
+  riskMeterImage: {
+    height: '100%',
+    width: '100%',
+  },
+  riskMeterOverlay: {
+    backgroundColor: 'white',
+    height: 20,
+    position: 'absolute',
+  },
+  questionContainer: {
+    flex: 1,
+    gap: 40,
+  },
+  questionCard: {
+    backgroundColor: 'white',
+    shadowColor: 'black',
+    shadowOpacity: 0.3,
+    padding: 20,
+    elevation: 10,
+    borderRadius: 10,
+    shadowRadius: 10,
+  },
+  questionText: {
+    fontSize: 20,
+    fontWeight: '600',
+  },
+  optionsContainer: {
+    gap: 20,
+  },
+  optionItem: {
+    flexDirection: 'row',
+    gap: 12,
+    alignItems: 'center',
+  },
+  optionText: {
+    fontSize: 18,
+  },
+  navigationButtonsContainer: {
+    flexDirection: 'row',
+    gap: 40,
+  },
   btnStyle: {
     flex: 1,
   },
