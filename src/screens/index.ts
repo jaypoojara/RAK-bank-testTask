@@ -1,5 +1,5 @@
-import HomeScreen from './Home';
-import ResultScreen from './Result';
-import QuestionsScreen from './Questions';
+import HomeScreen from './Homeeeeeeeee';
+import ResultScreen from './Resulttttttttt';
+import QuestionsScreen from './Questionsssssssss';
 
 export { HomeScreen, ResultScreen, QuestionsScreen };
