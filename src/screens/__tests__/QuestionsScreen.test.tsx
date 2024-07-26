@@ -1,7 +1,7 @@
 import React from 'react';
 import {render, fireEvent, screen} from '@testing-library/react-native';
 import {IQuestionItem} from '../../interface/questionInterface';
-import QuestionsScreen from '../QuestionsScreen';
+import QuestionsScreen from '../questions';
 
 // Mocking getMaxRiskScore function to return a fixed value for consistency
 jest.mock('../../utils/helper.ts', () => ({
@@ -75,42 +75,33 @@ jest.mock('@react-navigation/native', () => ({
 }));
 
 describe('QuestionsScreen', () => {
-  // beforeEach(() => {
-  //   useState.mockImplementation(jest.requireActual('react').useState);
-  //   //other preperations
-  // });
-  // const someMockOrSpySetter = jest.fn();
-
   it('should navigate to Result screen with correct totalScore on Finish button click', () => {
     // Render the QuestionsScreen component
-
     render(<QuestionsScreen />);
-    // useState.mockImplementation(() => [0, someMockOrSpySetter]);
+
     expect(screen.getByText(mockQuestions[0].question)).toBeTruthy();
     // Select and submit the first question's option
-    fireEvent.press(screen.getByText(mockQuestions[0].options[0].title)); // Novice
+    fireEvent.press(screen.getByText(mockQuestions[0].options[0].title));
     fireEvent.press(screen.getByText('Next')); // Click Next button
 
-    // expect(someMockOrSpySetter).toHaveBeenCalled();
-
     expect(screen.getByText(mockQuestions[1].question)).toBeTruthy();
-    // // Select and submit the first question's option
-    fireEvent.press(screen.getByText(mockQuestions[1].options[0].title)); // Novice
+    // // Select and submit the second question's option
+    fireEvent.press(screen.getByText(mockQuestions[1].options[0].title));
     fireEvent.press(screen.getByText('Next')); // Click Next button
 
     expect(screen.getByText(mockQuestions[2].question)).toBeTruthy();
-    // Select and submit the first question's option
-    fireEvent.press(screen.getByText(mockQuestions[2].options[0].title)); // Novice
+    // Select and submit the third question's option
+    fireEvent.press(screen.getByText(mockQuestions[2].options[0].title));
     fireEvent.press(screen.getByText('Next')); // Click Next button
 
     expect(screen.getByText(mockQuestions[3].question)).toBeTruthy();
-    // Select and submit the first question's option
-    fireEvent.press(screen.getByText(mockQuestions[3].options[0].title)); // Novice
+    // Select and submit the fourth question's option
+    fireEvent.press(screen.getByText(mockQuestions[3].options[0].title));
     fireEvent.press(screen.getByText('Next')); // Click Next button
 
     expect(screen.getByText(mockQuestions[4].question)).toBeTruthy();
-    // Select and submit the first question's option
-    fireEvent.press(screen.getByText(mockQuestions[4].options[0].title)); // Novice
+    // Select and submit the fifth question's option
+    fireEvent.press(screen.getByText(mockQuestions[4].options[0].title));
     fireEvent.press(screen.getByText('Finish')); // Click Next button
 
     // Check if the navigation.reset was called with correct parameters

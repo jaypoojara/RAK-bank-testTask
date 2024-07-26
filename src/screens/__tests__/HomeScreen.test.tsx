@@ -1,10 +1,7 @@
 import React from 'react';
 import {render, fireEvent, waitFor} from '@testing-library/react-native';
-import {NavigationContainer} from '@react-navigation/native';
-// import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {AppStackParams} from '../../../App';
-import HomeScreen from '../HomeScreen';
-import {appStrings} from '../../utils/helper';
+import HomeScreen from '../home';
+import {appStrings} from '../../utils/constants';
 
 const mockNavigate = jest.fn();
 jest.mock('@react-navigation/native', () => ({

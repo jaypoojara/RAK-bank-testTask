@@ -1,23 +1,16 @@
-import {
-  StyleProp,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  ViewStyle,
-} from 'react-native';
+import {StyleProp, TouchableOpacity, View, ViewStyle} from 'react-native';
 import React from 'react';
 import {TouchableOpacityProps} from 'react-native-gesture-handler';
-import {colors} from '../utils/theme';
+import {styles} from './styles';
 
-interface IProps extends TouchableOpacityProps {
+export interface IRadioButtonProps extends TouchableOpacityProps {
   value?: boolean;
   onChange?: (arg: boolean) => void;
   containerStyle?: StyleProp<ViewStyle>;
   fillStyle?: StyleProp<ViewStyle>;
 }
 
-const RadioButton = (props: IProps) => {
+const RadioButton = (props: IRadioButtonProps) => {
   const {value = false, onChange} = props;
   return (
     <TouchableOpacity
@@ -34,21 +27,3 @@ const RadioButton = (props: IProps) => {
 };
 
 export default RadioButton;
-
-const styles = StyleSheet.create({
-  container: {
-    height: 30,
-    width: 30,
-    borderRadius: 10,
-    borderWidth: 2,
-    borderColor: colors.primary,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  fill: {
-    height: '80%',
-    width: '80%',
-    borderRadius: 5,
-    backgroundColor: colors.primary,
-  },
-});

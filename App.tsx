@@ -1,14 +1,13 @@
-import {View, Text, StatusBar} from 'react-native';
+import {StatusBar} from 'react-native';
 import React from 'react';
 import {
   StackNavigationProp,
   createStackNavigator,
 } from '@react-navigation/stack';
-import HomeScreen from './src/screens/HomeScreen';
-import QuestionsScreen from './src/screens/QuestionsScreen';
-import ResultScreen from './src/screens/ResultScreen';
+
 import {NavigationContainer} from '@react-navigation/native';
 import {colors} from './src/utils/theme';
+import {HomeScreen, QuestionsScreen, ResultScreen} from './src/screens';
 
 export type AppStackParams = {
   Home: undefined;

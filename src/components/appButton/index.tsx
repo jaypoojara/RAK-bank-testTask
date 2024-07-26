@@ -1,14 +1,12 @@
 import {
   StyleProp,
-  StyleSheet,
   Text,
   TouchableOpacity,
   TouchableOpacityProps,
-  View,
   ViewStyle,
 } from 'react-native';
 import React from 'react';
-import {colors} from '../utils/theme';
+import {styles} from './styles';
 
 interface Props extends TouchableOpacityProps {
   title: string;
@@ -27,22 +25,3 @@ const AppButton = (props: Props) => {
 };
 
 export default AppButton;
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: colors.primary,
-    borderRadius: 10,
-    paddingHorizontal: 40,
-    paddingVertical: 20,
-    alignItems: 'center',
-  },
-  disabled: {
-    backgroundColor: '#A2A2A2',
-  },
-  title: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: '900',
-    justifyContent: 'center',
-  },
-});

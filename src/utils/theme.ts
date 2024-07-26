@@ -5,6 +5,8 @@ const colors = {
   primary: '#694F8E',
   primaryLight: '#AC97C9',
   btnColor: '#FCA851',
+  white: '#fff',
+  black: '#000',
 };
 
 export {colors};
