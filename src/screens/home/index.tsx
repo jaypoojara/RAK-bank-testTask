@@ -1,11 +1,11 @@
-import {SafeAreaView, Text, View} from 'react-native';
+import { SafeAreaView, Text, View } from 'react-native';
 import React from 'react';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
-import {AppNavigationProps} from '../../../App';
-import {appStrings} from '../../utils/constants';
-import {styles} from './styles';
-import {AppButton} from '../../components';
+import { AppNavigationProps } from '../../../App';
+import { appStrings } from '../../utils/constants';
+import { styles } from './styles';
+import { AppButton } from '../../components';
 
 const HomeScreen = () => {
   const navigation = useNavigation<AppNavigationProps>();

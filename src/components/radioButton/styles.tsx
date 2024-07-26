@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {colors} from '../../utils/theme';
+import { StyleSheet } from 'react-native';
+import { colors } from '../../utils/theme';
 
 export const styles = StyleSheet.create({
   container: {
@@ -15,6 +15,18 @@ export const styles = StyleSheet.create({
     height: '80%',
     width: '80%',
     borderRadius: 5,
+    backgroundColor: colors.primary,
+  },
+  activeRadioButtonContainer: {
+    borderColor: colors.white,
+  },
+  inActiveRadioButtonContainer: {
+    borderColor: colors.primary,
+  },
+  activeRadioFill: {
+    backgroundColor: colors.white,
+  },
+  inActiveRadioFill: {
     backgroundColor: colors.primary,
   },
 });

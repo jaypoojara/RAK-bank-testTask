@@ -3,7 +3,7 @@
     "key": "1",
     "question": "How would you describe your investment knowledge?",
     "options": [
-      {"key": "1-1", "title": "Novice", "points": 1},
+      { "key": "1-1", "title": "Novice", "points": 1 },
       {
         "key": "1-2",
         "title": "Intermediate",

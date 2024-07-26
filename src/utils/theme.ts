@@ -7,6 +7,8 @@ const colors = {
   btnColor: '#FCA851',
   white: '#fff',
   black: '#000',
+  transparent: 'transparent',
+  gray: '#A2A2A2',
 };
 
-export {colors};
+export { colors };

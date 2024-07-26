@@ -1,8 +1,13 @@
-import {DimensionValue, Dimensions, StyleSheet} from 'react-native';
-import {colors} from '../../utils/theme';
+import { DimensionValue, Dimensions, StyleSheet } from 'react-native';
+import { colors } from '../../utils/theme';
 
-const {height} = Dimensions.get('window');
-export const styles = (width?: DimensionValue) =>
+const { height } = Dimensions.get('window');
+
+type QuestionScreenStyleProps = {
+  riskMeterWidth: DimensionValue;
+};
+
+export const getStyles = ({ riskMeterWidth }: QuestionScreenStyleProps) =>
   StyleSheet.create({
     contentStyle: {
       paddingHorizontal: 15,
@@ -31,7 +36,7 @@ export const styles = (width?: DimensionValue) =>
       backgroundColor: colors.white,
       height: 20,
       position: 'absolute',
-      width: width,
+      width: riskMeterWidth,
     },
     questionContainer: {
       flex: 1,
@@ -76,7 +81,7 @@ export const styles = (width?: DimensionValue) =>
     riskMeter: {
       shadowColor: colors.black,
       shadowOpacity: 0.15,
-      shadowOffset: {height: 1, width: 1},
+      shadowOffset: { height: 1, width: 1 },
       backgroundColor: colors.white,
       borderRadius: 4,
       borderWidth: 2.5,

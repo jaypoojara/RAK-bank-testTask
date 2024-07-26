@@ -1,33 +1,32 @@
-import {
-  StyleProp,
-  Text,
-  TextStyle,
-  TouchableOpacity,
-  TouchableOpacityProps,
-} from 'react-native';
+import { Text, TouchableOpacity, TouchableOpacityProps } from 'react-native';
 import React from 'react';
-import RadioButton, {IRadioButtonProps} from '../radioButton';
-import {IOptionItem} from '../../interface/questionInterface';
-import {styles} from './styles';
+import RadioButton, { IRadioButtonProps } from '../radioButton';
+import { styles } from './styles';
 
 type OptionButtonProps = TouchableOpacityProps &
   IRadioButtonProps & {
-    item: IOptionItem;
+    item: string;
     key: string;
-    textStyle?: StyleProp<TextStyle>;
+    isActive: boolean;
   };
 
 const OptionContainer = (props: OptionButtonProps) => {
   return (
-    <TouchableOpacity {...props}>
-      <RadioButton
-        value={props.value}
-        onChange={props.onChange}
-        fillStyle={props.fillStyle}
-        containerStyle={props.containerStyle}
-      />
-      <Text style={[styles.optionText, props.textStyle]}>
-        {props.item.title}
+    <TouchableOpacity
+      {...props}
+      style={[
+        styles.optionItem,
+        props.isActive ? styles.activeOptionContainer : styles.inActiveOptionContainer,
+      ]}
+    >
+      <RadioButton value={props.value} isActive={props.isActive} />
+      <Text
+        style={[
+          styles.optionText,
+          props.isActive ? styles.activeOptionTextColor : styles.inActiveOptionTextColor,
+        ]}
+      >
+        {props.item}
       </Text>
     </TouchableOpacity>
   );

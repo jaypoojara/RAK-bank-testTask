@@ -1,4 +1,5 @@
-import {colors} from './theme';
+import { IQuestionItem } from '../interface/questionInterface';
+import { colors } from './theme';
 
 export const appStrings = {
   description:
@@ -29,4 +30,4 @@ export const riskMeterLabelData = [
   },
 ];
 
-export const mockData = require('../mock/questions.json');
+export const mockData: IQuestionItem[] = require('../mock/questions.json');

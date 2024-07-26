@@ -1,28 +1,29 @@
-import {StyleProp, TouchableOpacity, View, ViewStyle} from 'react-native';
+import { TouchableOpacityProps, View } from 'react-native';
 import React from 'react';
-import {TouchableOpacityProps} from 'react-native-gesture-handler';
-import {styles} from './styles';
+
+import { styles } from './styles';
 
 export interface IRadioButtonProps extends TouchableOpacityProps {
   value?: boolean;
-  onChange?: (arg: boolean) => void;
-  containerStyle?: StyleProp<ViewStyle>;
-  fillStyle?: StyleProp<ViewStyle>;
+  isActive?: boolean;
 }
 
 const RadioButton = (props: IRadioButtonProps) => {
-  const {value = false, onChange} = props;
+  const { value = false, isActive = false } = props;
   return (
-    <TouchableOpacity
-      testID="radio-button"
-      {...props}
-      onPress={() => onChange?.(!value)}>
-      <View style={[styles.container, props.containerStyle]}>
-        {value && (
-          <View testID="radio-fill" style={[styles.fill, props.fillStyle]} />
-        )}
-      </View>
-    </TouchableOpacity>
+    <View
+      style={[
+        styles.container,
+        isActive ? styles.activeRadioButtonContainer : styles.inActiveRadioButtonContainer,
+      ]}
+    >
+      {value && (
+        <View
+          testID="radio-fill"
+          style={[styles.fill, isActive ? styles.activeRadioFill : styles.inActiveRadioFill]}
+        />
+      )}
+    </View>
   );
 };
 

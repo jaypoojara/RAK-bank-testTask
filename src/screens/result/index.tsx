@@ -1,19 +1,20 @@
-import {Dimensions, SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import { Dimensions, SafeAreaView, Text, View } from 'react-native';
 import React from 'react';
 import RNSpeedometer from 'react-native-speedometer';
-import {getMaxRiskScore} from '../../utils/helper';
-import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
-import {AppNavigationProps, AppStackParams} from '../../../App';
-import {appStrings, riskMeterLabelData} from '../../utils/constants';
-import {styles} from './styles';
-import {AppButton} from '../../components';
+import { getMaxRiskScore } from '../../utils/helper';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { AppNavigationProps, AppStackParams } from '../../../App';
+import { appStrings, riskMeterLabelData } from '../../utils/constants';
+import { styles } from './styles';
+import { AppButton } from '../../components';
 
-const {width} = Dimensions.get('window');
+const { width } = Dimensions.get('screen');
+const speedoMeterMaxValue = getMaxRiskScore();
 
 type ResultRouteProps = RouteProp<AppStackParams, 'Result'>;
 
 const ResultScreen = () => {
-  const {params} = useRoute<ResultRouteProps>();
+  const { params } = useRoute<ResultRouteProps>();
   const navigation = useNavigation<AppNavigationProps>();
   const calculatedRisk = params.totalScore;
 
@@ -21,14 +22,12 @@ const ResultScreen = () => {
     <SafeAreaView style={styles.container}>
       <Text style={styles.titleText}>{appStrings.yourScore}</Text>
       <View style={styles.descriptionContainer}>
-        <Text style={styles.descriptionText}>
-          {appStrings.scoreDescription}
-        </Text>
+        <Text style={styles.descriptionText}>{appStrings.scoreDescription}</Text>
         <View style={styles.speedometerWrapper}>
           <RNSpeedometer
             minValue={1}
             value={calculatedRisk}
-            maxValue={getMaxRiskScore()}
+            maxValue={speedoMeterMaxValue}
             size={width * 0.8}
             labels={riskMeterLabelData}
           />
