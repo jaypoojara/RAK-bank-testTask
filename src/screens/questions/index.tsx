@@ -1,4 +1,4 @@
-import {Image, Text, TouchableOpacity, View, SafeAreaView} from 'react-native';
+import {Image, Text, View, SafeAreaView} from 'react-native';
 import React, {useMemo, useState} from 'react';
 
 import {IOptionItem, IQuestionItem} from '../../interface/questionInterface';
