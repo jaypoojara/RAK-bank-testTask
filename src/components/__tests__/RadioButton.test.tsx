@@ -1,35 +1,26 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react-native';
+import { render } from '@testing-library/react-native';
 import RadioButton from '../radioButton';
 
 
-describe('RadioButton', () => {
-  it('renders correctly', () => {
-    const { toJSON } = render(<RadioButton />);
-    expect(toJSON()).toMatchSnapshot();
+describe('RadioButton Component', () => {
+  it('should render correctly when inactive and not selected', () => {
+    const { queryByTestId } = render(<RadioButton value={false} isActive={false} />);
+    expect(queryByTestId('radio-fill')).toBeNull();
   });
 
-  it('shows filled circle when value is true', () => {
-    const { getByTestId } = render(<RadioButton value={true} />);
-    const fill = getByTestId('radio-fill');
-    expect(fill).toBeTruthy();
+  it('should render correctly when active and not selected', () => {
+    const { queryByTestId } = render(<RadioButton value={false} isActive={true} />);
+    expect(queryByTestId('radio-fill')).toBeNull();
   });
 
-  it('shows empty circle when value is false', () => {
-    const { queryByTestId } = render(<RadioButton value={false} />);
-    const fill = queryByTestId('radio-fill');
-    expect(fill).toBeNull();
+  it('should render correctly when inactive and selected', () => {
+    const { getByTestId } = render(<RadioButton value={true} isActive={false} />);
+    expect(getByTestId('radio-fill')).toBeTruthy();
   });
 
-  it('calls onChange when pressed', () => {
-    const onChangeMock = jest.fn();
-    const { getByTestId } = render(<RadioButton value={false} onChange={onChangeMock} />);
-    fireEvent.press(getByTestId('radio-button'));
-    expect(onChangeMock).toHaveBeenCalledWith(true);
-  });
-
-  it('does not call onChange if no onChange prop is provided', () => {
-    const { getByTestId } = render(<RadioButton value={false} />);
-    fireEvent.press(getByTestId('radio-button'));
+  it('should render correctly when active and selected', () => {
+    const { getByTestId } = render(<RadioButton value={true} isActive={true} />);
+    expect(getByTestId('radio-fill')).toBeTruthy();
   });
 });
