@@ -1,5 +1,5 @@
-import AppButton from './AppButtonnnnnn';
-import RadioButton from './RadioButtonnnnnn';
-import OptionContainer from './OptionContainerrrrrrr';
+import AppButton from './AppButton';
+import RadioButton from './RadioButton';
+import OptionContainer from './OptionContainer';
 
 export { AppButton, RadioButton, OptionContainer };

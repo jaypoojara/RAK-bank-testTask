@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from '@testing-library/react-native';
-import OptionContainer from '../OptionContainerrrrrrr';
+import OptionContainer from '../OptionContainer';
 
 describe('OptionContainer Component', () => {
   it('should render correctly when inactive and radio button not selected', () => {

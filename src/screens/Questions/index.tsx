@@ -5,7 +5,7 @@ import { IOptionItem } from '../../interface/questionInterface';
 import { getMaxRiskScore } from '../../utils/helper';
 import { useNavigation } from '@react-navigation/native';
 import { AppNavigationProps } from '../../../App';
-import { Images } from '../../assets/Imagesssss';
+import { Images } from '../../assets/Images';
 import { getStyles } from './styles';
 import { AppButton, OptionContainer } from '../../components';
 import { questionaire } from '../../mock';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react-native';
-import HomeScreen from '../Homeeeeeeeee';
+import HomeScreen from '../Home';
 import { appStrings } from '../../utils/constants';
 
 const mockNavigate = jest.fn();
