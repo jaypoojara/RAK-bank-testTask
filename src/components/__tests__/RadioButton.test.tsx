@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react-native';
-import RadioButton from '../radioButton';
+import RadioButton from '../RadioButton';
 
 
 describe('RadioButton Component', () => {

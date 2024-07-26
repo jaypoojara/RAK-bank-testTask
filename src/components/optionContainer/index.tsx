@@ -1,6 +1,6 @@
 import { Text, TouchableOpacity, TouchableOpacityProps } from 'react-native';
 import React from 'react';
-import RadioButton, { IRadioButtonProps } from '../radioButton';
+import RadioButton, { IRadioButtonProps } from '../RadioButton';
 import { styles } from './styles';
 
 type OptionButtonProps = TouchableOpacityProps &

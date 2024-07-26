@@ -1,5 +1,5 @@
-import HomeScreen from './home';
-import ResultScreen from './result';
-import QuestionsScreen from './questions';
+import HomeScreen from './Home';
+import ResultScreen from './Result';
+import QuestionsScreen from './Questions';
 
 export { HomeScreen, ResultScreen, QuestionsScreen };

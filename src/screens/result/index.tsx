@@ -42,7 +42,7 @@ const ResultScreen = () => {
             navigation.goBack();
           }}
           style={styles.btnStyle}
-          title="Go to Home"
+          title={appStrings.goToHome}
         />
       </View>
     </SafeAreaView>

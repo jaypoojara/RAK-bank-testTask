@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react-native';
 import { IQuestionItem } from '../../interface/questionInterface';
-import QuestionsScreen from '../questions';
+import QuestionsScreen from '../Questions';
 
 // Mocking getMaxRiskScore function to return a fixed value for consistency
 jest.mock('../../utils/helper.ts', () => ({

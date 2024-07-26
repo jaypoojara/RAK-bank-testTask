@@ -10,6 +10,7 @@ export const appStrings = {
   scoreDescription:
     'Based on your answers, we’ve calculated your risk profile score. This score helps us understand your investment preferences and guide you to the best options for your bank account.',
   thankYou: 'Thank you for completing the questionnaire!',
+  goToHome: 'Go to Home',
 };
 
 export const riskMeterLabelData = [
