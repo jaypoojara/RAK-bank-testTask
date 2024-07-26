@@ -2,7 +2,7 @@ module.exports = {
   
     "env": {
       "browser": true,
-      "es2021": true
+      "es2022": true
     },
     "extends": ["plugin:react/recommended", "airbnb", "airbnb/hooks", "prettier"],
     "plugins": ["react", "react-native"],
@@ -28,7 +28,8 @@ module.exports = {
       "react-native/no-inline-styles": "error", // Add this line
   
       // enforce a maximum file length of 500 lines
-      "max-lines": ["error", { "max": 500 }]
+      "max-lines": ["error", { "max": 500 }],
+      "react-hooks/exhaustive-deps": 'warn'
     }
   
 };

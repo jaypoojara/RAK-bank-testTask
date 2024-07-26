@@ -5,28 +5,26 @@ import { styles } from './styles';
 
 type OptionButtonProps = TouchableOpacityProps &
   IRadioButtonProps & {
-    item: string;
-    key: string;
-    isActive: boolean;
+    title: string;
   };
 
-const OptionContainer = (props: OptionButtonProps) => {
+const OptionContainer = ({ isActive, title, ...touchableOpacityProps }: OptionButtonProps) => {
   return (
     <TouchableOpacity
-      {...props}
+      {...touchableOpacityProps}
       style={[
         styles.optionItem,
-        props.isActive ? styles.activeOptionContainer : styles.inActiveOptionContainer,
+        isActive ? styles.activeOptionContainer : styles.inActiveOptionContainer,
       ]}
     >
-      <RadioButton value={props.value} isActive={props.isActive} />
+      <RadioButton isActive={isActive} />
       <Text
         style={[
           styles.optionText,
-          props.isActive ? styles.activeOptionTextColor : styles.inActiveOptionTextColor,
+          isActive ? styles.activeOptionTextColor : styles.inActiveOptionTextColor,
         ]}
       >
-        {props.item}
+        {title}
       </Text>
     </TouchableOpacity>
   );

@@ -5,22 +5,22 @@ import RadioButton from '../radioButton';
 
 describe('RadioButton Component', () => {
   it('should render correctly when inactive and not selected', () => {
-    const { queryByTestId } = render(<RadioButton value={false} isActive={false} />);
+    const { queryByTestId } = render(<RadioButton isActive={false} />);
     expect(queryByTestId('radio-fill')).toBeNull();
   });
 
   it('should render correctly when active and not selected', () => {
-    const { queryByTestId } = render(<RadioButton value={false} isActive={true} />);
+    const { queryByTestId } = render(<RadioButton isActive={false} />);
     expect(queryByTestId('radio-fill')).toBeNull();
   });
 
   it('should render correctly when inactive and selected', () => {
-    const { getByTestId } = render(<RadioButton value={true} isActive={false} />);
+    const { getByTestId } = render(<RadioButton isActive={true} />);
     expect(getByTestId('radio-fill')).toBeTruthy();
   });
 
   it('should render correctly when active and selected', () => {
-    const { getByTestId } = render(<RadioButton value={true} isActive={true} />);
+    const { getByTestId } = render(<RadioButton isActive={true} />);
     expect(getByTestId('radio-fill')).toBeTruthy();
   });
 });

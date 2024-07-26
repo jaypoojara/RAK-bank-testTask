@@ -1,8 +1,7 @@
-import { IQuestionItem } from '../interface/questionInterface';
+import { questionaire } from '../mock';
 
 export const getMaxRiskScore = () => {
-  const questions: IQuestionItem[] = require('../mock/questions.json');
-  return questions.reduce((total, question) => {
+  return questionaire.reduce((total, question) => {
     const maxPoints = Math.max(...question.options.map((option) => option.points));
     return total + maxPoints;
   }, 0);

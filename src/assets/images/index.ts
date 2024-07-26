@@ -1,3 +1,3 @@
-import riskGradient from './riskGradient1.png';
-
-export { riskGradient };
+export const Images = {
+  riskGradient: require('./riskGradient1.png'),
+};

@@ -12,7 +12,7 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.welcomeText}>Welcome to RAK-bank</Text>
+      <Text style={styles.welcomeText}>{appStrings.welcome}</Text>
       <View>
         <Text style={styles.descriptionText}>{appStrings.description}</Text>
       </View>

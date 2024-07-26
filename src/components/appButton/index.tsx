@@ -7,12 +7,11 @@ interface Props extends TouchableOpacityProps {
   style?: StyleProp<ViewStyle>;
 }
 
-const AppButton = (props: Props) => {
-  const { title, disabled } = props;
+const AppButton = ({ title, disabled, style, ...touchableOpacityProps }: Props) => {
   return (
     <TouchableOpacity
-      {...props}
-      style={[styles.container, props.style, disabled && styles.disabled]}
+      {...touchableOpacityProps}
+      style={[styles.container, style, disabled && styles.disabled]}
     >
       <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>

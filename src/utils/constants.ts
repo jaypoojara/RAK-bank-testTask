@@ -1,7 +1,7 @@
-import { IQuestionItem } from '../interface/questionInterface';
 import { colors } from './theme';
 
 export const appStrings = {
+  welcome: 'Welcome to RAK-bank',
   description:
     'Answer a few questions about your investment preferences to determine your risk profile. This will help us guide you towards the best options for opening a bank account tailored to your needs.',
   getStarted: 'Ready to get started?',
@@ -29,5 +29,3 @@ export const riskMeterLabelData = [
     activeBarColor: colors.red,
   },
 ];
-
-export const mockData: IQuestionItem[] = require('../mock/questions.json');

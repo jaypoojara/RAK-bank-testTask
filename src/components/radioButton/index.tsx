@@ -1,15 +1,12 @@
-import { TouchableOpacityProps, View } from 'react-native';
+import { View } from 'react-native';
 import React from 'react';
-
 import { styles } from './styles';
 
-export interface IRadioButtonProps extends TouchableOpacityProps {
-  value?: boolean;
+export interface IRadioButtonProps {
   isActive?: boolean;
 }
 
-const RadioButton = (props: IRadioButtonProps) => {
-  const { value = false, isActive = false } = props;
+const RadioButton = ({ isActive }: IRadioButtonProps) => {
   return (
     <View
       style={[
@@ -17,7 +14,7 @@ const RadioButton = (props: IRadioButtonProps) => {
         isActive ? styles.activeRadioButtonContainer : styles.inActiveRadioButtonContainer,
       ]}
     >
-      {value && (
+      {isActive && (
         <View
           testID="radio-fill"
           style={[styles.fill, isActive ? styles.activeRadioFill : styles.inActiveRadioFill]}

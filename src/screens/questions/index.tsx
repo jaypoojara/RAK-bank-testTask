@@ -5,10 +5,10 @@ import { IOptionItem } from '../../interface/questionInterface';
 import { getMaxRiskScore } from '../../utils/helper';
 import { useNavigation } from '@react-navigation/native';
 import { AppNavigationProps } from '../../../App';
-import { riskGradient } from '../../assets/images';
-import { mockData as questionaire } from '../../utils/constants';
+import { Images } from '../../assets/images';
 import { getStyles } from './styles';
 import { AppButton, OptionContainer } from '../../components';
+import { questionaire } from '../../mock';
 
 const QuestionsScreen = () => {
   const navigation = useNavigation<AppNavigationProps>();
@@ -70,7 +70,7 @@ const QuestionsScreen = () => {
       <View style={styles.contentStyle}>
         <View style={styles.riskMeter}>
           <View style={styles.riskMeterContainer}>
-            <Image style={styles.riskMeterImage} source={riskGradient} />
+            <Image style={styles.riskMeterImage} source={Images.riskGradient} />
             <View style={styles.riskMeterOverlay} />
           </View>
         </View>
@@ -78,16 +78,15 @@ const QuestionsScreen = () => {
           <View style={styles.questionCard}>
             <Text style={styles.questionText}>{currentQuestion.question}</Text>
             <View style={styles.optionsContainer}>
-              {currentQuestion.options.map((item, index) => {
+              {currentQuestion.options.map((item) => {
                 return (
                   <OptionContainer
-                    item={item.title}
+                    title={item.title}
                     key={item.key}
-                    isActive={answers[currentQuestionIndex] === item}
                     onPress={() => {
                       onRadioBtnChangeHandler(item);
                     }}
-                    value={Boolean(answers[currentQuestionIndex]?.key === item.key)}
+                    isActive={answers?.[currentQuestionIndex]?.key === item.key}
                   />
                 );
               })}
